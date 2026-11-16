@@ -1,7 +1,7 @@
 <!doctype html>
 <html lang="vi">
 <head>
-<!-- phien-ban: 202611160809 -->
+<!-- phien-ban: 202611160855 -->
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <title>Cập nhật lãi suất Techcombank</title>
@@ -138,10 +138,16 @@ function tai(i){
   bao("Đã tải file Word. Muốn thành Google Docs: kéo file vào Google Drive → mở bằng Google Docs.");
 }
 // Docs đã được máy tự chép lúc chạy xong; gọi lại ở đây chỉ để lấy link (và chép nếu máy chưa kịp)
+// Mã commit mới nhất của nhánh kết quả → Apps Script đọc ĐÚNG bản vừa chạy (raw GitHub giữ bản cũ tới 5 phút). Lỗi thì bỏ qua.
+function shaMoi(){
+  return fetch("https://api.github.com/repos/anhtuandayle/tcb-ops/branches/tu-dong-ket-qua", {cache: "no-store"})
+    .then(function(r){ return r.ok ? r.json() : {}; }).then(function(j){ var s = j && j.commit && j.commit.sha; return /^[0-9a-f]{40}$/.test(s || "") ? s : ""; })
+    .catch(function(){ return ""; });
+}
 function moDocs(i){
   var b = BAI[i], w = window.open("", "_blank");
   bao("Đang mở file Docs…");
-  fetch(DONG_BO + "?ma=" + b.ma + "&t=" + Date.now()).then(function(r){ return r.json(); }).then(function(j){
+  shaMoi().then(function(sha){ return fetch(DONG_BO + "?ma=" + b.ma + (sha ? "&sha=" + sha : "") + "&t=" + Date.now()); }).then(function(r){ return r.json(); }).then(function(j){
     if (!j || !j.url) throw (j && j.loi) || "lỗi";
     if (w) w.location.href = j.url; else location.href = j.url;
     bao("Đã mở file Docs \"" + b.ten + "\" (bản ngày " + (j.ngay || "–") + ").");
