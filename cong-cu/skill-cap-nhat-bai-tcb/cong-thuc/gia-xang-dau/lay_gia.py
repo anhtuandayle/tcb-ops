@@ -1,0 +1,181 @@
+"""Lấy giá xăng dầu mới nhất cho bài TCB "Giá xăng dầu hôm nay" -> gia.json (đầu vào của tao_sua.py).
+
+  python3 -I lay_gia.py <thư mục làm việc>/cap-nhat
+
+- Petrolimex: tìm thông cáo "điều chỉnh giá xăng dầu" MỚI NHẤT trên petrolimex.com.vn, tải ảnh bảng giá về
+  cap-nhat/tam/plx-gia.jpg (để đối chiếu); số lấy từ webgia.com (bảng chữ đủ 6 mặt hàng, chép từ Petrolimex),
+  so chéo với giaxanghomnay.com. 06/11/2026 Trang dặn bỏ topi.vn (Topi để giá kỳ cũ sau kỳ 15h 05/11 → bài sai).
+- PVOIL: bảng PVOIL trên giaxanghomnay.com (pvoil.com.vn chặn máy chủ).
+- Mipec: mipec.com.vn/pages/gia-xang-dau-ban-le.
+In bảng so sánh để đối chiếu. Thiếu nguồn nào thì hệ thống đó = null.
+"""
+import html, json, os, re, subprocess, sys
+
+UA = 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 Chrome/141 Safari/537.36'
+PLX_LIST = 'https://www.petrolimex.com.vn/ndi/thong-cao-bao-chi.html'
+WEBGIA = 'https://webgia.com/gia-xang-dau/petrolimex/'
+GXHN = 'https://giaxanghomnay.com/'
+MIPEC = 'https://www.mipec.com.vn/pages/gia-xang-dau-ban-le'
+
+
+def tai(url, ra=None):
+    r = subprocess.run(['curl', '-sS', '-L', '-m', '40', '--retry', '2', '-A', UA, url] + (['-o', ra] if ra else []),
+                       capture_output=True)
+    if r.returncode != 0:
+        raise RuntimeError(f'không tải được {url}: {r.stderr.decode()[:120]}')
+    return None if ra else r.stdout.decode('utf-8', 'replace')
+
+
+def chu(x):
+    return re.sub(r'\s+', ' ', html.unescape(re.sub(r'<[^>]+>', ' ', x))).strip()
+
+
+def so(x):
+    d = re.sub(r'\D', '', x)
+    return int(d) if d else None
+
+
+def ma_hang(ten):
+    t = ten.lower().replace(' ', '')
+    if 'dầuhỏa' in t or 'dầuhoả' in t:
+        return 'dau_hoa'
+    if '0,001s' in t:
+        return 'do_0001'
+    if '0,05s' in t:
+        return 'do_005'
+    if '95-v' in t and '95-iii' not in t or 'mức5' in t and '95' in t:
+        return 'e10_95_v'
+    if '95-iii' in t or 'mức3' in t and '95' in t:
+        return 'e10_95_iii'
+    if '92' in t:
+        return 'e5_92'
+    return None
+
+
+def bang(s):
+    """Mọi bảng trong trang -> list các dòng (list ô chữ)."""
+    out = []
+    for t in re.findall(r'<table.*?</table>', s, re.S):
+        out.append([[chu(c) for c in re.findall(r'<t[dh][^>]*>(.*?)</t[dh]>', r, re.S)]
+                    for r in re.findall(r'<tr.*?</tr>', t, re.S)])
+    return out
+
+
+def doc_bang_gia(rows, so_cot):
+    g = {}
+    for r in rows:
+        if len(r) < 1 + so_cot:
+            continue
+        mh = ma_hang(r[0])
+        vals = [so(c) for c in r[1:1 + so_cot]]
+        if mh and all(v and 10000 < v < 100000 for v in vals):
+            g[mh] = vals
+    return g
+
+
+def main():
+    thu_muc = sys.argv[1] if len(sys.argv) > 1 else 'cap-nhat'
+    os.makedirs(os.path.join(thu_muc, 'tam'), exist_ok=True)
+    kq = {'_ghi_chu': {}}
+
+    # 1) Thông cáo Petrolimex mới nhất
+    plx = {}
+    try:
+        ds = tai(PLX_LIST)
+        # thông cáo giá mới nhất: thường là "điều chỉnh giá xăng dầu", có lúc "chủ động giảm/tăng giá xăng dầu" (15/10/2026)
+        m = re.search(r'href="(/ndi/thong-cao-bao-chi/[^"]*(?:dieu-chinh|giam|tang)-gia-xang-dau[^"]*)"', ds)
+        plx['url'] = 'https://www.petrolimex.com.vn' + m.group(1)
+        bai = tai(plx['url'])
+        plx['tieu_de'] = chu(re.search(r'<title>(.*?)</title>', bai, re.S).group(1)).split('::')[0].strip()
+        vt = bai.find('mức giá mới như sau')
+        h1 = bai.find('<h1')
+        sau = bai[vt:] if vt >= 0 else (bai[h1:] if h1 >= 0 else bai)
+        # ảnh bảng giá nằm trong /jpgs/ (19/10/2026: trang không còn <h1>, thẻ img có loading/decoding trước src)
+        anh = (re.search(r'<img[^>]+src="([^"]*/jpgs/[^"]+\.jpg)"', sau)
+               or re.search(r'<img[^>]+src="([^"]+\.jpg)"', sau))
+        if anh:
+            src = anh.group(1)
+            src = 'https:' + src if src.startswith('//') else src
+            tai(src.replace(' ', '%20'), os.path.join(thu_muc, 'tam', 'plx-gia.jpg'))
+            plx['anh'] = os.path.join(thu_muc, 'tam', 'plx-gia.jpg')
+    except Exception as e:
+        kq['_ghi_chu']['petrolimex_tcbc'] = f'lỗi đọc thông cáo Petrolimex: {e}'
+    kq['_petrolimex_tcbc'] = plx
+
+    # 2) Petrolimex: webgia.com (chính) + giaxanghomnay.com (so chéo); PVOIL: giaxanghomnay.com
+    ky = plx.get('tieu_de', '').replace('Petrolimex điều chỉnh giá xăng dầu', 'kỳ điều chỉnh').strip()
+    wg, gx, pv, luc_wg, luc_gx = {}, {}, {}, '', ''
+    try:
+        t = tai(WEBGIA)
+        for rows in bang(t):
+            wg.update(doc_bang_gia(rows, 2))
+        m = re.search(r'cập nhật mới nhất vào lúc ([\d:]+ [\d/]+)', chu(t))
+        luc_wg = m.group(1) if m else ''
+    except Exception as e:
+        kq['_ghi_chu']['webgia'] = f'lỗi đọc webgia.com: {e}'
+    try:
+        t = tai(GXHN)
+        tb = bang(t)
+        for rows in tb:
+            hdr = ' '.join(rows[0]).lower() if rows else ''
+            if 'giá vùng 1' in hdr and not gx:      # bảng Petrolimex: tên | tăng giảm | kỳ trước | V1 | V2
+                gx = doc_bang_gia([[r[0]] + r[-2:] for r in rows if len(r) >= 3], 2)
+            elif hdr.endswith('giá') and not pv:     # bảng PVOIL: tên | tăng giảm | kỳ trước | giá
+                pv = doc_bang_gia([[r[0], r[-1]] for r in rows if len(r) >= 2], 1)
+        m = re.search(r'Giá của PVOIL cập nhật ([\d-]+ [\d:]+)', chu(t))
+        luc_gx = m.group(1) if m else ''
+    except Exception as e:
+        kq['_ghi_chu']['giaxanghomnay'] = f'lỗi đọc giaxanghomnay.com: {e}'
+    p = wg or gx
+    if wg and gx:
+        lech = [k for k in wg if k in gx and wg[k] != gx[k]]
+        if lech:
+            print('KHÔNG ĐỌC ĐƯỢC chắc chắn giá Petrolimex: webgia.com lệch giaxanghomnay.com ở', ', '.join(lech))
+            kq['_ghi_chu']['petrolimex'] = 'webgia.com và giaxanghomnay.com lệch nhau ở ' + ', '.join(lech) + ' – cần mở ảnh thông cáo đối chiếu'
+    kq['petrolimex'] = {'ky': f'{ky} (số theo {"webgia.com" if wg else "giaxanghomnay.com"}, lúc {luc_wg if wg else ""}; đối chiếu ảnh thông cáo)'.replace(', lúc )', ')'),
+                        'nguon': plx.get('url') or WEBGIA, 'gia': p} if p else None
+    kq['pvoil'] = {'ky': f'{ky} (theo giaxanghomnay.com, cập nhật {luc_gx})', 'nguon': GXHN, 'gia': pv} if pv else None
+    if not p:
+        kq['_ghi_chu']['petrolimex'] = 'không đọc được bảng Petrolimex trên webgia.com lẫn giaxanghomnay.com'
+    if not pv:
+        kq['_ghi_chu']['pvoil'] = 'không đọc được bảng PVOIL trên giaxanghomnay.com'
+
+    # 3) Mipec
+    try:
+        mp = {}
+        for rows in bang(tai(MIPEC)):
+            mp.update(doc_bang_gia(rows, 2))
+        kq['mipec'] = {'ky': 'giá đang áp dụng trên mipec.com.vn', 'nguon': MIPEC, 'gia': mp} if mp else None
+        if not mp:
+            kq['_ghi_chu']['mipec'] = 'mipec.com.vn không có bảng giá'
+    except Exception as e:
+        kq['mipec'] = None
+        kq['_ghi_chu']['mipec'] = f'lỗi đọc mipec.com.vn: {e}'
+
+    # 4) Chốt chặn: Mipec bán theo giá trần nên thường khớp Petrolimex Vùng 1. Lệch > 300 đ ở xăng → báo cần duyệt.
+    p, m = (kq.get('petrolimex') or {}).get('gia') or {}, (kq.get('mipec') or {}).get('gia') or {}
+    lech = [k for k in ('e10_95_iii', 'e5_92') if p.get(k) and m.get(k) and abs(p[k][0] - m[k][0]) > 300]
+    if lech:
+        print('LƯU Ý: giá Petrolimex lệch Mipec ở', ', '.join(f'{k} {p[k][0]:,} ≠ {m[k][0]:,}' for k in lech),
+              '– một trong hai nguồn chưa cập nhật kỳ mới, cần mở ảnh thông cáo đối chiếu')
+        kq['_ghi_chu']['doi_chieu'] = 'Petrolimex lệch Mipec ở ' + ', '.join(lech) + ' – cần đối chiếu ảnh thông cáo'
+
+    ra = os.path.join(thu_muc, 'gia.json')
+    json.dump(kq, open(ra, 'w', encoding='utf-8'), ensure_ascii=False, indent=1)
+
+    print('Thông cáo Petrolimex mới nhất:', plx.get('tieu_de', '?'))
+    print('  ', plx.get('url', '?'))
+    print('  Ảnh bảng giá (PHẢI mở ra đối chiếu):', plx.get('anh', 'KHÔNG TẢI ĐƯỢC'))
+    ten = {'e10_95_v': 'E10 RON 95-V', 'e10_95_iii': 'E10 RON 95-III', 'e5_92': 'E5 RON 92-II',
+           'do_0001': 'DO 0,001S-V', 'do_005': 'DO 0,05S-II', 'dau_hoa': 'Dầu hỏa 2-K'}
+    print(f'{"Mặt hàng":16} | {"Petrolimex V1/V2 (webgia)":24} | {"PVOIL (GXHN)":12} | Mipec V1/V2')
+    for k, t in ten.items():
+        f = lambda h: '/'.join(f'{v:,}' for v in ((kq.get(h) or {}).get('gia') or {}).get(k, [])) or '-'
+        print(f'{t:16} | {f("petrolimex"):24} | {f("pvoil"):12} | {f("mipec")}')
+    for k, v in kq['_ghi_chu'].items():
+        print('LƯU Ý:', k, '-', v)
+    print('→', ra)
+
+
+if __name__ == '__main__':
+    main()

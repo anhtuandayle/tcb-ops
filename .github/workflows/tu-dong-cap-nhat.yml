@@ -1,0 +1,93 @@
+name: Cập nhật bài TCB (bấm nút trên app)
+# Nút "Chạy cập nhật" trên app → hàm Netlify `chay` bấm workflow này kèm mã bài → mỗi bài 1 máy chạy song song,
+# bài nào xong đăng ngay lên nhánh tu-dong-ket-qua. Bài lãi suất xong thì tự chép vào file Google Docs cố định.
+on:
+  workflow_dispatch:
+    inputs:
+      bai: { description: 'Mã bài, cách nhau bằng dấu cách', required: true, default: '' }
+      html: { description: 'HTML người dùng gửi (gzip + base64) – có thì ghép số mới vào đúng HTML này', required: false, default: '' }
+      ma_html: { description: 'Mã yêu cầu ghép HTML (chữ thường + số)', required: false, default: '' }
+      ngay: { description: 'Ngày ghi trong bài dd/mm/yyyy (trống = ngày mai; lãi suất luôn ngày mai)', required: false, default: '' }
+permissions:
+  contents: write
+# Không khóa cả workflow: nhiều người bấm cùng lúc thì các lượt chạy song song, bước đăng tự thử lại khi đụng nhau.
+jobs:
+  kiem:
+    runs-on: ubuntu-latest
+    timeout-minutes: 3
+    outputs:
+      bai: ${{ steps.p.outputs.bai }}
+      ma: ${{ steps.p.outputs.ma }}
+      ds: ${{ steps.p.outputs.ds }}
+    steps:
+      - uses: actions/checkout@v4
+        with: { sparse-checkout: cong-cu/tu-dong/danh-sach.json, sparse-checkout-cone-mode: false }
+      - id: p
+        env: { BAI_TAY: '${{ inputs.bai }}' }
+        # chỉ nhận mã bài có trong danh-sach.json; không bao giờ đưa chữ người gửi vào câu lệnh
+        run: |
+          python3 - <<'EOF2' >> $GITHUB_OUTPUT
+          import json, os, re, time
+          HOP_LE = {v for v in json.load(open('cong-cu/tu-dong/danh-sach.json')).values()
+                    if isinstance(v, str) and re.fullmatch(r'[a-z0-9-]{2,40}', v)}
+          tay = sorted({b for b in os.environ.get('BAI_TAY', '').split() if b in HOP_LE})
+          if tay:
+              print('bai=' + ' '.join(tay)); print('ds=' + json.dumps(tay)); print('ma=tay-%d' % time.time())
+          EOF2
+          cat $GITHUB_OUTPUT
+  chay:
+    # mỗi bài 1 máy riêng chạy song song; bài nào xong ĐĂNG NGAY (không chờ bài chậm nhất) – tối ưu 06/11/2026
+    needs: kiem
+    if: needs.kiem.outputs.bai != ''
+    runs-on: ubuntu-latest
+    timeout-minutes: 12
+    strategy:
+      fail-fast: false
+      matrix:
+        ma: ${{ fromJSON(needs.kiem.outputs.ds) }}
+    steps:
+      - uses: actions/checkout@v4
+      - id: can
+        env: { MA: '${{ matrix.ma }}' }
+        run: if ls cong-cu/skill-cap-nhat-bai-tcb/cong-thuc/$MA/*.js >/dev/null 2>&1; then echo "trinh_duyet=1" >> $GITHUB_OUTPUT; fi
+      - name: Cài trình duyệt (chỉ bài cần)
+        if: steps.can.outputs.trinh_duyet == '1'
+        run: |
+          npm i -g playwright@1.48.2 >/dev/null 2>&1
+          echo "NODE_PATH=$(npm root -g)" >> $GITHUB_ENV
+          timeout 120 npx -y playwright@1.48.2 install chromium || true
+          # máy GitHub đã có sẵn thư viện của Chrome → thường không cần cài thêm; thử mở, lỗi mới cài thư viện
+          NODE_PATH=$(npm root -g) node -e "require('playwright').chromium.launch().then(b=>b.close())" \
+            || timeout 240 npx -y playwright@1.48.2 install --with-deps chromium
+      - name: Chạy bài
+        env: { MA: '${{ matrix.ma }}', NGAY_BAI: '${{ inputs.ngay }}', HTML_B64: '${{ inputs.html }}', MA_HTML: '${{ inputs.ma_html }}' }
+        run: |
+          mkdir -p ket-qua
+          [ -d cong-cu/skill-cap-nhat-bai-tcb/cong-thuc/$MA ] || [[ $MA == lai-suat-[12] ]] || { echo "LỖI không có công thức $MA" > ket-qua/$MA.log; exit 0; }
+          timeout 420 bash cong-cu/tu-dong/chay.sh $MA ket-qua > ket-qua/$MA.log 2>&1 || echo "LỖI $MA" >> ket-qua/$MA.log
+          cat ket-qua/$MA.log
+          # nguồn có lúc không hiện bảng (PNJ…) → nghỉ 15 giây chạy lại 1 lần; lần sau đọc đủ nguồn thì dùng lần sau
+          if [ $MA != gia-ca-phe ] && grep -qE 'KHÔNG ĐỌC ĐƯỢC|KHÔNG đọc được|không đọc được|LỖI|Error' ket-qua/$MA.log; then
+            sleep 15
+            timeout 420 bash cong-cu/tu-dong/chay.sh $MA lai > lai.log 2>&1 || echo "LỖI $MA" >> lai.log
+            echo "::group::chạy lại"; cat lai.log; echo "::endgroup::"
+            if grep -q '^XONG' lai.log && ! grep -qE 'KHÔNG ĐỌC ĐƯỢC|KHÔNG đọc được|không đọc được|^LỖI|Error' lai.log; then
+              rm -rf ket-qua/$MA; mv lai/$MA ket-qua/$MA; mv lai.log ket-qua/$MA.log
+            fi
+          fi
+          # Ghép số mới vào ĐÚNG HTML người dùng gửi (12/11/2026) – kèm lệnh chạy hoặc từ hộp thư Apps Script
+          bash cong-cu/tu-dong/sau_chay.sh "$MA" || true
+          find ket-qua -mindepth 2 ! -name bai.html -type f -delete   # chỉ giữ bai.html + log
+      - name: Đăng kết quả bài này lên nhánh tu-dong-ket-qua
+        env: { MA: '${{ needs.kiem.outputs.ma }}', BAI: '${{ matrix.ma }}', GH_TOKEN: '${{ github.token }}' }
+        run: |
+          git config --global user.name "Cập nhật tự động"
+          git config --global user.email "actions@users.noreply.github.com"
+          SHA=$(bash cong-cu/tu-dong/dang_ket_qua.sh ket-qua "Kết quả $BAI $(TZ=Asia/Ho_Chi_Minh date '+%H:%M %d/%m/%Y')" "$MA") || exit 1
+          echo "SHA=$SHA" >> $GITHUB_ENV
+      - name: Tự chép bản mới vào file Google Docs (bài lãi suất)
+        # bài trong TU_DONG_DOCS chạy xong thì chép thẳng vào Docs cố định – không phải bấm "Mở file Docs" hay dán tay
+        env: { BAI: '${{ matrix.ma }}', TU_DONG_DOCS: 'lai-suat-1 lai-suat-2' }
+        run: |
+          [[ " $TU_DONG_DOCS " == *" $BAI "* ]] && grep -q '^XONG' ket-qua/$BAI.log || exit 0
+          bash cong-cu/tu-dong/dong_bo_docs.sh "$SHA" "$BAI"
