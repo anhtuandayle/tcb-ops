@@ -21,8 +21,10 @@
 const DB = {
   REPO: 'anhtuandayle/tcb-ops',   // kho GitHub chứa công cụ
   THU_MUC_ID: '',                 // id thư mục Drive để chứa file Docs mới (trống = thư mục gốc My Drive)
-  // đọc kết quả qua hàm Netlify (raw.githubusercontent giữ bản cũ tới 5 phút); trống = đọc raw GitHub
-  KQ: 'https://tcb-ops-sn.netlify.app/.netlify/functions/kq?f=',
+  // Tùy chọn: hàm Netlify `kq` (đọc bản mới tức thì cho nút "Mở file Docs"). Trống = đọc raw GitHub (có thể chậm ~5 phút).
+  // Máy GitHub luôn gửi kèm sha nên phần tự chép vào Docs KHÔNG cần Netlify. Có Netlify rồi thì điền:
+  // 'https://tcb-ops-sn.netlify.app/.netlify/functions/kq?f='
+  KQ: '',
 };
 DB.RAW = 'https://raw.githubusercontent.com/' + DB.REPO + '/';
 DB.FILE_CO_DINH = DB.RAW + 'main/cong-cu/tu-dong/file-co-dinh.json';
@@ -134,8 +136,16 @@ function canQuyenSua_() {
   DriveApp.createFile('x', '').setTrashed(true);
 }
 
-/** Chạy thử trong trình soạn mã (chọn hàm "thu" → Chạy): Google hỏi quyền Drive + mạng, rồi đồng bộ bài cà phê. */
+/** Chạy thử trong trình soạn mã (chọn hàm "thu" → Chạy): Google hỏi quyền Drive + mạng, rồi thử đồng bộ bài lãi suất 1.
+ *  Chưa có kết quả nào (repo mới, máy chưa chạy lần nào) thì chỉ báo "chưa có", không phải lỗi – cứ Triển khai tiếp. */
 function thu() {
+  DriveApp.getRootFolder();
   if (DB.THU_MUC_ID) DriveApp.getFolderById(DB.THU_MUC_ID);
-  Logger.log(JSON.stringify(dongBo_('lai-suat-1', '')));
+  UrlFetchApp.fetch('https://api.github.com', {muteHttpExceptions: true});
+  Logger.log('✔ Đã có quyền Drive + mạng.');
+  try {
+    Logger.log('Thử đồng bộ lai-suat-1: ' + JSON.stringify(dongBo_('lai-suat-1', '')));
+  } catch (err) {
+    Logger.log('Chưa có kết quả để chép (bình thường nếu máy GitHub chưa chạy lần nào): ' + String(err && err.message || err).slice(0, 150));
+  }
 }
