@@ -87,7 +87,7 @@ var BAI = [
 var GOC = /github\.io$/.test(location.hostname) ? "du-lieu/" : "https://anhtuandayle.github.io/tcb-ops/lai-suat/du-lieu/";
 var tt = {}, html = {};
 // Apps Script DongBoDocs.gs (…/exec) – giống cong-cu/tu-dong/dong-bo-url.txt. Trống = ẩn nút "Mở file Docs".
-var DONG_BO = "";
+var DONG_BO = "https://script.google.com/macros/s/AKfycby2TD5RRw7qEWMn-TCoJr1zfJHuNoEXeiZLk0xCR8h80fBrM6Qn-rrwGI4e7VMZSVZ0/exec";
 function $(s){ return document.querySelector(s); }
 function esc(s){ return String(s == null ? "" : s).replace(/[&<>"]/g, function(c){ return {"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]; }); }
 function gio(iso){ if (!iso) return "–"; var d = new Date(iso); return isNaN(d) ? iso : d.toLocaleString("vi-VN", {hour:"2-digit", minute:"2-digit", day:"2-digit", month:"2-digit", year:"numeric", timeZone:"Asia/Ho_Chi_Minh"}); }
