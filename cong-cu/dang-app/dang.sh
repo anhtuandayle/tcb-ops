@@ -35,7 +35,7 @@ cp -r "$GOC/cong-cu/dang-app/netlify-goc/." .     # + cấu hình & hàm nút ch
 git add -A && git commit -qm "Cấu hình Netlify (nút chạy)" && git push -qf origin HEAD:refs/heads/netlify
 
 # 3. Chờ web thật lên đúng phiên bản
-for i in $(seq 1 12); do
+for i in $(seq 1 ${CHO:-12}); do
   curl -s "$WEB?t=$RANDOM" | grep -q "phien-ban: $PB" && { echo "ĐÃ LÊN: $WEB (phiên bản $PB)"; exit 0; }
   sleep 15; done
 echo "Đã đẩy nhưng sau 3 phút web chưa hiện bản $PB — kiểm tra lại: $WEB"; exit 1
