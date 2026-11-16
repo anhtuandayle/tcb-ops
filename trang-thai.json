@@ -15,7 +15,7 @@
   "can_duyet": "Ngoài bảng – \"Kỳ hạn | Lãi suất %/năm | Cách tính lãi | Số tiền lãi nhận được\": bảng ví dụ có 8 ô lãi suất (4.30, 4.60, 6.30, 6.50, 5.60) cùng các số tiền tính theo đó – lãi suất Techcombank, chỉ sửa theo techcombank.com, giữ nguyên.\nNgoài bảng – \"Ví dụ: Khách hàng Private gửi tiết kiệm 100,000,000 VND vào sản phẩm Tiết kiệm thường bằng hình thức trực tuy…\": lãi suất/ví dụ tính của Techcombank – chỉ sửa theo techcombank.com (biểu lãi suất chính thức), giữ nguyên.\nNgoài bảng – \"Số tiền nhận được = 100,000,000 x (1 + 6.40%/1) ^ (1 x 5) = 136,366,640 VND\": lãi suất/ví dụ tính của Techcombank – chỉ sửa theo techcombank.com (biểu lãi suất chính thức), giữ nguyên.\nNgoài bảng – \"Năm | Lãi suất %/năm | Cách tính lãi | Số tiền lãi nhận được\": bảng ví dụ có 5 ô lãi suất (6.40) cùng các số tiền tính theo đó – lãi suất Techcombank, chỉ sửa theo techcombank.com, giữ nguyên.\nNgoài bảng – \"Trường hợp khách hàng hưởng lãi trước kỳ hạn: Khách hàng được hưởng mức lãi suất 0.05%/năm.\": lãi suất/ví dụ tính của Techcombank – chỉ sửa theo techcombank.com (biểu lãi suất chính thức), giữ nguyên.\nNgoài bảng – \"Số tiền lãi = 100,000,000 x 0.05% x 156/365 = 21,370 VND.\": lãi suất/ví dụ tính của Techcombank – chỉ sửa theo techcombank.com (biểu lãi suất chính thức), giữ nguyên.\nNgoài bảng – \"Như vậy, tổng số tiền khách hàng nhận về là 100,000,000 + 21,370 = 100,021,370 VND.\": lãi suất/ví dụ tính của Techcombank – chỉ sửa theo techcombank.com (biểu lãi suất chính thức), giữ nguyên.\nNgoài bảng – \"Lưu ý: Lã",
   "loi": ""
  },
- "_yeu_cau": "tay-1794819035",
+ "_yeu_cau": "tay-1794819149",
  "gia-ca-phe": {
   "ok": true,
   "luc": "2026-11-16T08:52:22+00:00",
@@ -50,10 +50,10 @@
  },
  "gia-kim-loai": {
   "ok": true,
-  "luc": "2026-11-16T08:51:03+00:00",
+  "luc": "2026-11-16T08:52:40+00:00",
   "ngay": "17/11/2026",
   "ten": "Giá kim loại thế giới: Bảng giá cập nhật và các yếu tố ảnh hưởng – 17/11/2026",
-  "can_duyet": "Giá nguồn chạy theo thời gian thực, lấy lúc 15h51 giờ VN 16/11/2026; mở lại trang nguồn có thể thấy số khác. Đã dùng số trong \"Bảng giá Kim loại\", không dùng dải chạy chữ đầu trang.\nTiêu đề cột ghi \"Giá (VND/lượng)\" nhưng nguồn niêm yết Đồng, Niken, Chì, Nhôm, Kẽm, Thiếc theo VNĐ/tấn và Quặng sắt theo VNĐ/dmtu – giữ nguyên tiêu đề cột như bài (bài đã có dòng Lưu ý về đơn vị).\nCác mốc năm trong phần phân tích (năm 2025, đầu năm 2026, đầu tư khoáng sản giảm 9% năm 2025, World Bank…) – nguồn không đề cập, giữ nguyên.",
+  "can_duyet": "Giá nguồn chạy theo thời gian thực, lấy lúc 15h52 giờ VN 16/11/2026; mở lại trang nguồn có thể thấy số khác. Đã dùng số trong \"Bảng giá Kim loại\", không dùng dải chạy chữ đầu trang.\nTiêu đề cột ghi \"Giá (VND/lượng)\" nhưng nguồn niêm yết Đồng, Niken, Chì, Nhôm, Kẽm, Thiếc theo VNĐ/tấn và Quặng sắt theo VNĐ/dmtu – giữ nguyên tiêu đề cột như bài (bài đã có dòng Lưu ý về đơn vị).\nCác mốc năm trong phần phân tích (năm 2025, đầu năm 2026, đầu tư khoáng sản giảm 9% năm 2025, World Bank…) – nguồn không đề cập, giữ nguyên.",
   "loi": ""
  },
  "gia-lua-gao": {
