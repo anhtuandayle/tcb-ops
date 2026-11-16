@@ -207,5 +207,13 @@
   "ten": "Vàng 14K giá hôm nay: Bảng giá chi tiết cập nhật – 17/11/2026",
   "can_duyet": "Đoạn \"1.1. Xu hướng giá vàng 14K gần đây\": chữ chỉ chiều đổi theo số mới \"giảm\" → \"tăng\", \"giảm\" → \"tăng\" – đọc lại câu.",
   "loi": ""
+ },
+ "gia-vang-nhan": {
+  "ok": true,
+  "luc": "2026-11-16T08:53:30+00:00",
+  "ngay": "17/11/2026",
+  "ten": "Giá vàng nhẫn hôm nay: Bảng giá các thương hiệu – 17/11/2026",
+  "can_duyet": "Câu \"Trong phiên 23/10, một số thương hiệu điều chỉnh giảm so với phiên trước, mức giảm phổ biến vài trăm nghìn VND/lượng.\" (diễn biến phiên, mức giảm \"vài trăm nghìn\") không có nguồn để tính lại – giữ nguyên, cần người viết lại.\nMục 3: bài ghi nguồn \"Kitco\" nhưng số lấy từ giavang.org (XAU/USD); mốc \"so với đầu giờ sáng hôm trước\" được thay bằng biến động 24 giờ của nguồn – xem lại.",
+  "loi": ""
  }
 }
