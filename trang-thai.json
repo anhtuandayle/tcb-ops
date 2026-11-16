@@ -87,5 +87,13 @@
   "ten": "Giá bạch kim hôm nay: Biến động thị trường và góc nhìn đầu tư – 17/11/2026",
   "can_duyet": "Bảng giá theo ngày: 5 dòng = 5 phiên mới nhất của hợp đồng bạch kim NYMEX (16/11/2026, 13/11/2026, 12/11/2026, 11/11/2026, 10/11/2026); nguồn không có ngày nghỉ nên ngày có thể không liền nhau. Số của nguồn có thể lệch vài USD so với số bài cũ vì khác nguồn (bài cũ có thể lấy giá giao ngay).\nPhiên mới nhất (16/11/2026) đọc lúc 2026-11-16 08:41 UTC; nếu thị trường còn mở, giá là giá đang giao dịch, chưa phải giá chốt phiên.\nCâu giá: mức thay đổi trong câu là số nguyên làm tròn từ -26.00.",
   "loi": ""
+ },
+ "gia-dau-the-gioi": {
+  "ok": true,
+  "luc": "2026-11-16T08:51:15+00:00",
+  "ngay": "17/11/2026",
+  "ten": "Cập nhật giá dầu thế giới hôm nay – 17/11/2026",
+  "can_duyet": "Giá Brent/WTI là giá giao dịch trong phiên trên TradingView (Tính đến ngày hôm nay 08:51 GMT, lấy lúc 2026-11-16 08:51 GMT, ?) nên còn thay đổi; bài ghi ngày hôm sau theo quy tắc ghi ngày.\nĐoạn mô tả đầu bài (sapo) nhắc \"diễn biến 5 ngày gần đây\" nhưng bài không có bảng 5 ngày – giữ nguyên câu chữ, không thêm bảng.",
+  "loi": ""
  }
 }
