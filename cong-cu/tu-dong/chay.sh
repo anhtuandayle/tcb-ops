@@ -11,7 +11,9 @@ N=$(TZ=Asia/Ho_Chi_Minh date -d "+1 day" +%d/%m/%Y)     # mặc định ghi ngà
 [[ ${NGAY_BAI:-} =~ ^[0-9]{2}/[0-9]{2}/[0-9]{4}$ && $MA != lai-suat-[12] ]] && N=$NGAY_BAI   # ngày Trang chọn trên app (07/11/2026); lãi suất luôn ngày mai
 export NGAY_BAI=$N                                       # công thức + doi_ngay_bai.py đọc cùng một ngày
 P="python3 -I"; X=cap-nhat/xem.txt; X2=cap-nhat/xem2.txt
-buoc(){ echo "▶ $*"; "$@"; }
+# bước hỏng → in "LỖI:" (app hiện ghi chú, workflow tự chạy lại 1 lần); bài đi tiếp để bước sau quyết định
+buoc(){ echo "▶ $*"; "$@"; local rc=$? a ten=$1; for a; do case $a in *.py|*.js) ten=${a##*/}; break;; esac; done
+  [ $rc = 0 ] || echo "LỖI: bước $ten thất bại (mã $rc)"; return $rc; }
 case $MA in
   lai-suat-1|lai-suat-2)                                  # 2 bài lãi suất: công cụ riêng cong-cu/cap-nhat-lai-suat
     SO=${MA#lai-suat-}; cp "$GOC/../cap-nhat-lai-suat/cap-nhat.py" .
@@ -68,7 +70,9 @@ case $MA in
     buoc $P $CT/tao_sua.py --xem $X --gia $G --goc cap-nhat/tam/bai1.html --ra cap-nhat/sua.json
     KIEM=(--gia $G --goc cap-nhat/tam/bai1.html) ;;
 esac
-buoc $P $SKILL sua cap-nhat/cau-hinh.json cap-nhat/sua.json
+# không có bản sửa = nguồn giá hỏng → DỪNG, không đăng bài chỉ đổi ngày mà báo "Có bản mới" (lỗi cũ, sửa 16/11/2026)
+[ -s cap-nhat/sua.json ] || { echo "LỖI: không lấy được giá mới từ nguồn – không đăng bài chỉ đổi ngày"; exit 1; }
+buoc $P $SKILL sua cap-nhat/cau-hinh.json cap-nhat/sua.json || exit 1
 [ $MA = vang-14k ] && buoc $P $CT/tao_sua.py --xem - --gia - --goc cap-nhat/tam/bai1.html --bo-to-ngay-xu-huong cap-nhat/tam/bai1.min.html
 $P $SKILL xem cap-nhat/cau-hinh.json bai1 > $X2
 $P $CT/tao_sua.py --kiem --xem $X2 "${KIEM[@]}" | tee cap-nhat/kiem.txt

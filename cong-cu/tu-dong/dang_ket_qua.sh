@@ -15,6 +15,8 @@ for lan in $(seq 1 12); do
   fi
   python3 -I "$TD/tong_hop.py" "$KQ" xuat $MA_YC >&2
   cp "$KQ"/h-*.html "$KQ"/h-*.json xuat/ 2>/dev/null || true          # kết quả ghép HTML (nếu có)
+  mkdir -p xuat/nhat-ky   # nhật ký lượt chạy gần nhất của mỗi bài – đọc được không cần đăng nhập GitHub
+  for f in "$KQ"/*.log; do [ -f "$f" ] && cp "$f" "xuat/nhat-ky/$(basename "$f" .log).txt"; done
   ls xuat/h-*.json 2>/dev/null | sort | head -n -300 | sed 's/\.json$//' | while read -r f; do rm -f "$f.json" "$f.html"; done   # giữ 300 yêu cầu gần nhất
   git -C xuat add -A
   if git -C xuat diff --cached --quiet; then git -C xuat rev-parse HEAD 2>/dev/null; exit 0; fi
