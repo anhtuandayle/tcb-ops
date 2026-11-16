@@ -151,5 +151,13 @@
   "ten": "Giá cà phê sàn London và New York mới nhất hôm nay – 17/11/2026",
   "can_duyet": "Giá lấy theo lần cập nhật của nguồn (Robusta London 15:37 ngày 16/11/2026; Arabica New York 15:37 ngày 16/11/2026) – nếu sàn đang giao dịch thì đây là giá trong phiên, có thể còn đổi; bài ghi ngày hôm sau theo quy tắc chung.",
   "loi": ""
+ },
+ "vang-24k": {
+  "ok": true,
+  "luc": "2026-11-16T08:52:08+00:00",
+  "ngay": "17/11/2026",
+  "ten": "Vàng 24K là gì? Giá vàng 24k hôm nay – 17/11/2026",
+  "can_duyet": "",
+  "loi": ""
  }
 }
