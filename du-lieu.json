@@ -1,0 +1,303 @@
+{
+ "cap_nhat": "",
+ "nut_chay": "",
+ "bai": [
+  {
+   "id": "gia-ca-phe",
+   "thu_tu": 1,
+   "ten": "Giá cà phê",
+   "nhom": "Nông sản",
+   "url": "https://techcombank.com/thong-tin/blog/gia-ca-phe-hom-nay",
+   "ten_file": "Giá cà phê hôm nay trực tuyến – 08/11/2026",
+   "link": "",
+   "luc": "",
+   "ghi_chu": ""
+  },
+  {
+   "id": "gia-xang-dau",
+   "thu_tu": 2,
+   "ten": "Giá xăng dầu",
+   "nhom": "Năng lượng",
+   "url": "https://techcombank.com/thong-tin/blog/gia-xang-dau-hom-nay",
+   "ten_file": "Giá xăng dầu hôm nay bao nhiêu 1 lít mới nhất – 08/11/2026",
+   "link": "",
+   "luc": "",
+   "ghi_chu": ""
+  },
+  {
+   "id": "vang-24k",
+   "thu_tu": 3,
+   "ten": "Vàng 24K",
+   "nhom": "Vàng",
+   "url": "https://techcombank.com/thong-tin/blog/vang-24k",
+   "ten_file": "Vàng 24K là gì? Giá vàng 24k hôm nay – 08/11/2026",
+   "link": "",
+   "luc": "",
+   "ghi_chu": ""
+  },
+  {
+   "id": "vang-14k",
+   "thu_tu": 4,
+   "ten": "Vàng 14K",
+   "nhom": "Vàng",
+   "url": "https://techcombank.com/thong-tin/blog/vang-14k-gia-hom-nay",
+   "ten_file": "Vàng 14K giá hôm nay: Bảng giá chi tiết cập nhật – 08/11/2026",
+   "link": "",
+   "luc": "",
+   "ghi_chu": ""
+  },
+  {
+   "id": "vang-18k",
+   "thu_tu": 5,
+   "ten": "Vàng 18K",
+   "nhom": "Vàng",
+   "url": "https://techcombank.com/thong-tin/blog/vang-18k",
+   "ten_file": "Vàng 18K là gì? Giá vàng 18k hôm nay – 08/11/2026",
+   "link": "",
+   "luc": "",
+   "ghi_chu": ""
+  },
+  {
+   "id": "vang-10k",
+   "thu_tu": 6,
+   "ten": "Vàng 10K",
+   "nhom": "Vàng",
+   "url": "https://techcombank.com/thong-tin/blog/vang-10k",
+   "ten_file": "Vàng 10K là gì? Vàng 10k bao nhiêu 1 chỉ – 08/11/2026",
+   "link": "",
+   "luc": "",
+   "ghi_chu": ""
+  },
+  {
+   "id": "1-chi-vang",
+   "thu_tu": 7,
+   "ten": "1 chỉ vàng bao nhiêu tiền",
+   "nhom": "Vàng",
+   "url": "https://techcombank.com/thong-tin/blog/1-chi-vang-bao-nhieu-tien",
+   "ten_file": "1 chỉ vàng bao nhiêu tiền? Giá vàng 24K, 18K, 9999 hôm nay – 08/11/2026",
+   "link": "",
+   "luc": "",
+   "ghi_chu": ""
+  },
+  {
+   "id": "vang-16k",
+   "thu_tu": 8,
+   "ten": "Vàng 16K",
+   "nhom": "Vàng",
+   "url": "https://techcombank.com/thong-tin/blog/gia-vang-16k-hom-nay",
+   "ten_file": "Vàng 16K giá hôm nay: Bảng giá chi tiết cập nhật – 08/11/2026",
+   "link": "",
+   "luc": "",
+   "ghi_chu": ""
+  },
+  {
+   "id": "vang-610",
+   "thu_tu": 9,
+   "ten": "Vàng 610",
+   "nhom": "Vàng",
+   "url": "https://techcombank.com/thong-tin/blog/vang-610-la-vang-gi",
+   "ten_file": "Vàng 610 là vàng gì? Giá vàng 610 hôm nay bao nhiêu 1 chỉ – 08/11/2026",
+   "link": "",
+   "luc": "",
+   "ghi_chu": ""
+  },
+  {
+   "id": "lai-suat-1",
+   "thu_tu": 10,
+   "ten": "Lãi suất tiết kiệm (Bài 1)",
+   "nhom": "Lãi suất",
+   "url": "https://techcombank.com/thong-tin/blog/lai-suat-tiet-kiem",
+   "ten_file": "Lãi suất tiết kiệm Techcombank – 08/11/2026",
+   "link": "",
+   "luc": "",
+   "ghi_chu": ""
+  },
+  {
+   "id": "lai-suat-2",
+   "thu_tu": 11,
+   "ten": "Cách tính lãi suất (Bài 2)",
+   "nhom": "Lãi suất",
+   "url": "https://techcombank.com/thong-tin/blog/cach-tinh-lai-suat-tien-gui-tiet-kiem",
+   "ten_file": "Cách tính lãi suất tiền gửi tiết kiệm Techcombank – 08/11/2026",
+   "link": "",
+   "luc": "",
+   "ghi_chu": ""
+  },
+  {
+   "id": "gia-nhom",
+   "thu_tu": 12,
+   "ten": "Giá nhôm",
+   "nhom": "Kim loại",
+   "url": "https://techcombank.com/thong-tin/blog/gia-nhom",
+   "ten_file": "Giá nhôm thế giới hôm nay – 08/11/2026",
+   "link": "",
+   "luc": "",
+   "ghi_chu": ""
+  },
+  {
+   "id": "gia-lua-gao",
+   "thu_tu": 13,
+   "ten": "Giá lúa gạo",
+   "nhom": "Nông sản",
+   "url": "https://techcombank.com/thong-tin/blog/gia-lua-gao-hom-nay",
+   "ten_file": "Giá lúa gạo hôm nay cập nhật – 08/11/2026",
+   "link": "",
+   "luc": "",
+   "ghi_chu": ""
+  },
+  {
+   "id": "gia-kim-loai",
+   "thu_tu": 14,
+   "ten": "Giá kim loại thế giới",
+   "nhom": "Kim loại",
+   "url": "https://techcombank.com/thong-tin/blog/gia-kim-loai-the-gioi",
+   "ten_file": "Giá kim loại thế giới: Bảng giá cập nhật và các yếu tố ảnh hưởng – 08/11/2026",
+   "link": "",
+   "luc": "",
+   "ghi_chu": ""
+  },
+  {
+   "id": "gia-ca-cao",
+   "thu_tu": 15,
+   "ten": "Giá ca cao",
+   "nhom": "Nông sản",
+   "url": "https://techcombank.com/thong-tin/blog/gia-ca-cao",
+   "ten_file": "Giá ca cao hôm nay: Biến động thị trường và góc nhìn cho nhà đầu tư – 08/11/2026",
+   "link": "",
+   "luc": "",
+   "ghi_chu": ""
+  },
+  {
+   "id": "gia-dieu",
+   "thu_tu": 16,
+   "ten": "Giá điều",
+   "nhom": "Nông sản",
+   "url": "https://techcombank.com/thong-tin/blog/gia-dieu-hom-nay",
+   "ten_file": "Giá điều hôm nay: Cập nhật thị trường trong nước, thế giới & các yếu tố tác động – 08/11/2026",
+   "link": "",
+   "luc": "",
+   "ghi_chu": ""
+  },
+  {
+   "id": "gia-dong",
+   "thu_tu": 17,
+   "ten": "Giá đồng",
+   "nhom": "Kim loại",
+   "url": "https://techcombank.com/thong-tin/blog/gia-dong-hom-nay",
+   "ten_file": "Giá đồng hôm nay trực tuyến & các yếu tố tác động đến thị trường – 08/11/2026",
+   "link": "",
+   "luc": "",
+   "ghi_chu": ""
+  },
+  {
+   "id": "gia-thep",
+   "thu_tu": 18,
+   "ten": "Giá thép",
+   "nhom": "Kim loại",
+   "url": "https://techcombank.com/thong-tin/blog/gia-thep-hom-nay",
+   "ten_file": "Giá thép trong nước và thế giới hôm nay – 08/11/2026",
+   "link": "",
+   "luc": "",
+   "ghi_chu": ""
+  },
+  {
+   "id": "gia-ca-phe-dak-lak",
+   "thu_tu": 19,
+   "ten": "Giá cà phê Đắk Lắk",
+   "nhom": "Nông sản",
+   "url": "https://techcombank.com/thong-tin/blog/gia-ca-phe-dak-lak-hom-nay",
+   "ten_file": "Giá cà phê Đắk Lắk hôm nay – 08/11/2026",
+   "link": "",
+   "luc": "",
+   "ghi_chu": ""
+  },
+  {
+   "id": "gia-ca-phe-luan-don",
+   "thu_tu": 20,
+   "ten": "Giá cà phê sàn Luân Đôn",
+   "nhom": "Nông sản",
+   "url": "https://techcombank.com/thong-tin/blog/gia-ca-phe-san-luan-don-hom-nay",
+   "ten_file": "Giá cà phê sàn London và New York mới nhất hôm nay – 08/11/2026",
+   "link": "",
+   "luc": "",
+   "ghi_chu": ""
+  },
+  {
+   "id": "gia-gas",
+   "thu_tu": 21,
+   "ten": "Giá gas",
+   "nhom": "Năng lượng",
+   "url": "https://techcombank.com/thong-tin/blog/gia-gas-hom-nay",
+   "ten_file": "Cập nhật giá gas hôm nay mới nhất – 08/11/2026",
+   "link": "",
+   "luc": "",
+   "ghi_chu": ""
+  },
+  {
+   "id": "gia-dau-the-gioi",
+   "thu_tu": 22,
+   "ten": "Giá dầu thế giới",
+   "nhom": "Năng lượng",
+   "url": "https://techcombank.com/thong-tin/blog/gia-dau-the-gioi",
+   "ten_file": "Cập nhật giá dầu thế giới hôm nay – 08/11/2026",
+   "link": "",
+   "luc": "",
+   "ghi_chu": ""
+  },
+  {
+   "id": "gia-tieu",
+   "thu_tu": 23,
+   "ten": "Giá tiêu",
+   "nhom": "Nông sản",
+   "url": "https://techcombank.com/thong-tin/blog/gia-tieu-hom-nay",
+   "ten_file": "Giá tiêu hôm nay mới nhất – 08/11/2026",
+   "link": "",
+   "luc": "",
+   "ghi_chu": ""
+  },
+  {
+   "id": "gia-vang-sjc",
+   "thu_tu": 24,
+   "ten": "Giá vàng SJC",
+   "nhom": "Vàng",
+   "url": "https://techcombank.com/thong-tin/blog/gia-vang-sjc",
+   "ten_file": "Giá vàng SJC hôm nay: Bảng giá cập nhật và lưu ý khi mua bán – 08/11/2026",
+   "link": "",
+   "luc": "",
+   "ghi_chu": ""
+  },
+  {
+   "id": "gia-vang-nhan",
+   "thu_tu": 25,
+   "ten": "Giá vàng nhẫn",
+   "nhom": "Vàng",
+   "url": "https://techcombank.com/thong-tin/blog/gia-vang-nhan-hom-nay",
+   "ten_file": "Giá vàng nhẫn hôm nay: Bảng giá các thương hiệu – 08/11/2026",
+   "link": "",
+   "luc": "",
+   "ghi_chu": ""
+  },
+  {
+   "id": "gia-bach-kim",
+   "thu_tu": 26,
+   "ten": "Giá bạch kim",
+   "nhom": "Kim loại",
+   "url": "https://techcombank.com/thong-tin/blog/gia-bach-kim",
+   "ten_file": "Giá bạch kim hôm nay: Biến động thị trường và góc nhìn đầu tư – 08/11/2026",
+   "link": "",
+   "luc": "",
+   "ghi_chu": ""
+  },
+  {
+   "id": "gia-niken",
+   "thu_tu": 27,
+   "ten": "Giá niken",
+   "nhom": "Kim loại",
+   "url": "https://techcombank.com/thong-tin/blog/gia-niken",
+   "ten_file": "Giá Niken hôm nay: Biến động thị trường và góc nhìn đầu tư – 08/11/2026",
+   "link": "",
+   "luc": "",
+   "ghi_chu": ""
+  }
+ ]
+}
