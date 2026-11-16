@@ -290,11 +290,17 @@ var HAM_THEM = HAM.replace(/chay$/, "them");
 // Mở file Docs = bản mới nhất (12/11/2026): trang web nhỏ chạy trên tài khoản Google của Trang (Apps Script
 // cong-cu/tu-dong/google-apps-script/DongBoDocs.gs) chép bản máy vừa chạy vào file Docs cố định của bài rồi trả link.
 var DONG_BO = "https://script.google.com/macros/s/AKfycby2TD5RRw7qEWMn-TCoJr1zfJHuNoEXeiZLk0xCR8h80fBrM6Qn-rrwGI4e7VMZSVZ0/exec";   // DÁN link Apps Script DongBoDocs.gs (…/exec) vào đây; giống cong-cu/tu-dong/dong-bo-url.txt
+// Mã commit mới nhất của nhánh kết quả → Apps Script đọc ĐÚNG bản vừa chạy (raw GitHub giữ bản cũ tới 5 phút). Lỗi thì bỏ qua.
+function shaMoi(){
+  return fetch("https://api.github.com/repos/anhtuandayle/tcb-ops/branches/tu-dong-ket-qua", {cache: "no-store"})
+    .then(function(r){ return r.ok ? r.json() : {}; }).then(function(j){ var s = j && j.commit && j.commit.sha; return /^[0-9a-f]{40}$/.test(s || "") ? s : ""; })
+    .catch(function(){ return ""; });
+}
 function moDocs(id){
   var b = du.bai.filter(function(x){ return x.id === id; })[0] || {}, w = window.open("", "_blank");
   if (w) { try { w.document.write('<meta charset="utf-8"><p style="font:16px Arial;padding:24px">Đang chép bản mới nhất vào Google Docs…</p>'); } catch (e) {} }
   bao("Đang chép bản mới nhất vào Google Docs…");
-  fetch(DONG_BO + "?ma=" + encodeURIComponent(id) + "&t=" + Date.now()).then(function(r){ return r.json(); }).then(function(j){
+  shaMoi().then(function(sha){ return fetch(DONG_BO + "?ma=" + encodeURIComponent(id) + (sha ? "&sha=" + sha : "") + "&t=" + Date.now()); }).then(function(r){ return r.json(); }).then(function(j){
     if (!j || !j.url) throw (j && j.loi) || "lỗi";
     if (w) w.location.href = j.url; else location.href = j.url;
     bao("Đã mở file Docs (" + (j.vua_chep ? "vừa chép bản mới nhất" : "đã là bản mới nhất") + ").");
