@@ -1,0 +1,36 @@
+▶ python3 -I /home/runner/work/tcb-ops/tcb-ops/cong-cu/skill-cap-nhat-bai-tcb/cap-nhat-bai-tcb/scripts/cap_nhat.py lay cap-nhat/cau-hinh.json
+bai1 ok
+▶ node /home/runner/work/tcb-ops/tcb-ops/cong-cu/skill-cap-nhat-bai-tcb/cong-thuc/gia-ca-cao/lay_gia.js cap-nhat/gia.json
+banggianongsan 6 dòng | đăng 08:34 16/11/2026 | bảng ngày 16/11/2026
+ICE new_york Dec26 -, Mar27 -, May27 -, Jul27 -, Sep27 -, Dec27 -, Mar28 -, May28 -, Jul28 -, Sep28 - | As of Monday, November 16, 2026 04:01:07 AM ET - Market data delayed minimum of 15 minutes
+ICE london Dec26 -, Mar27 -, May27 -, Jul27 -, Sep27 -, Dec27 -, Mar28 -, May28 -, Jul28 -, Sep28 - | As of Monday, November 16, 2026 04:01:11 AM ET - Market data delayed minimum of 15 minutes
+▶ python3 -I /home/runner/work/tcb-ops/tcb-ops/cong-cu/skill-cap-nhat-bai-tcb/cap-nhat-bai-tcb/scripts/cap_nhat.py dung cap-nhat/cau-hinh.json 17/11/2026
+bai1 Giá ca cao hôm nay: Biến động thị trường và góc nhìn cho nhà đầu tư – 17/11/2026: 0 bảng lãi suất [], 0 ô sửa, 0 ô kỳ hạn gần nhất, 0 ô '-', 0 ô đổi màu, đổi ngày/tháng: 5
+▶ python3 -I /home/runner/work/tcb-ops/tcb-ops/cong-cu/skill-cap-nhat-bai-tcb/cong-thuc/gia-ca-cao/tao_sua.py --xem cap-nhat/xem.txt --gia cap-nhat/gia.json --goc cap-nhat/tam/bai1.html --ra cap-nhat/sua.json
+0 chỗ cần đổi, 21 mục cần duyệt → cap-nhat/sua.json
+  cần duyệt: Bảng trong nước, cột "Thay đổi" dòng "Ca cao tươi": nguồn ghi "▲ +0 ~ 100" (7.300 – 8.000 → 7.300 – 8.100), bài ghi "0 VND/kg" – không ghi được đúng dạng của bài, giữ nguyên.
+  cần duyệt: New York CCZ26: trang ICE chưa có giá khớp cho hợp đồng này (KL 0) – giữ nguyên "4,907" / "+165".
+  cần duyệt: New York CCH27: trang ICE chưa có giá khớp cho hợp đồng này (KL 0) – giữ nguyên "5,046" / "+175".
+  cần duyệt: New York CCK27: trang ICE chưa có giá khớp cho hợp đồng này (KL 0) – giữ nguyên "5,092" / "+175".
+  cần duyệt: New York CCN27: trang ICE chưa có giá khớp cho hợp đồng này (KL 0) – giữ nguyên "5,125" / "+166".
+  cần duyệt: New York CCU27: trang ICE chưa có giá khớp cho hợp đồng này (KL 0) – giữ nguyên "5,126" / "+147".
+  cần duyệt: New York CCZ27: trang ICE chưa có giá khớp cho hợp đồng này (KL 0) – giữ nguyên "5,098" / "+132".
+  cần duyệt: New York CCH28: trang ICE chưa có giá khớp cho hợp đồng này (KL 0) – giữ nguyên "5,088" / "+122".
+  cần duyệt: New York CCK28: trang ICE chưa có giá khớp cho hợp đồng này (KL 0) – giữ nguyên "5,060" / "+114".
+  cần duyệt: New York CCN28: trang ICE chưa có giá khớp cho hợp đồng này (KL 0) – giữ nguyên "5,036" / "+106".
+  cần duyệt: New York CCU28: trang ICE chưa có giá khớp cho hợp đồng này (KL 0) – giữ nguyên "5,017" / "+105".
+  cần duyệt: London CAZ26: trang ICE chưa có giá khớp cho hợp đồng này (KL 0) – giữ nguyên "3,757" / "+125".
+  cần duyệt: London CAH27: trang ICE chưa có giá khớp cho hợp đồng này (KL 0) – giữ nguyên "3,892" / "+127".
+  cần duyệt: London CAK27: trang ICE chưa có giá khớp cho hợp đồng này (KL 0) – giữ nguyên "3,924" / "+129".
+  cần duyệt: London CAN27: trang ICE chưa có giá khớp cho hợp đồng này (KL 0) – giữ nguyên "3,955" / "+130".
+  cần duyệt: London CAU27: trang ICE chưa có giá khớp cho hợp đồng này (KL 0) – giữ nguyên "3,915" / "+115".
+  cần duyệt: London CAZ27: trang ICE chưa có giá khớp cho hợp đồng này (KL 0) – giữ nguyên "3,848" / "+94".
+  cần duyệt: London CAH28: trang ICE chưa có giá khớp cho hợp đồng này (KL 0) – giữ nguyên "3,887" / "+89".
+  cần duyệt: London CAK28: trang ICE chưa có giá khớp cho hợp đồng này (KL 0) – giữ nguyên "3,847" / "+89".
+  cần duyệt: London CAN28: trang ICE chưa có giá khớp cho hợp đồng này (KL 0) – giữ nguyên "3,820" / "+86".
+  cần duyệt: London CAU28: trang ICE chưa có giá khớp cho hợp đồng này (KL 0) – giữ nguyên "3,794" / "+82".
+▶ python3 -I /home/runner/work/tcb-ops/tcb-ops/cong-cu/skill-cap-nhat-bai-tcb/cap-nhat-bai-tcb/scripts/cap_nhat.py sua cap-nhat/cau-hinh.json cap-nhat/sua.json
+bai1: sửa được 0/0 chỗ
+Soát: khớp hết
+đổi ngày trong chữ sang 17/11/2026: 0 chỗ
+XONG gia-ca-cao ngày 17/11/2026
