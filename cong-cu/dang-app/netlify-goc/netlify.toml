@@ -1,4 +1,4 @@
-# Trang tcb-ops-sn.netlify.app: đăng nguyên thư mục gốc (bản sao gh-pages), không cần bước dựng.
+# Trang cap-nhat-lai-suat.netlify.app: đăng nguyên thư mục gốc (bản sao gh-pages), không cần bước dựng.
 # Hàm netlify/functions/chay.mjs = nút "Chạy cập nhật" (bấm GitHub Actions hộ người xem).
 [build]
   publish = "."

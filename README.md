@@ -30,7 +30,7 @@ Mỗi sáng 6h43 (giờ VN) ─► workflow lai-suat-cong-khai.yml ─► tu-don
 
 ## Cài một lần
 
-Tên đang dùng: kho **`anhtuandayle/tcb-ops`** (để công khai), Netlify **`tcb-ops-sn`**. Đổi tên thì tìm và thay 2 chuỗi này trong toàn repo.
+Tên đang dùng: kho **`anhtuandayle/tcb-ops`** (để công khai), Netlify **`cap-nhat-lai-suat`**. Đổi tên thì tìm và thay 2 chuỗi này trong toàn repo.
 
 1. **GitHub:** tạo kho công khai `tcb-ops` rồi đẩy nhánh `main`. Vào Settings → Pages: Source = nhánh `gh-pages` (nhánh này có sau bước 3).
 2. **Apps Script (đồng bộ Docs):** vào script.google.com → Dự án mới → dán `DongBoDocs.gs` (và `appsscript.json` nếu bật hiển thị file kê khai).
@@ -43,7 +43,7 @@ Tên đang dùng: kho **`anhtuandayle/tcb-ops`** (để công khai), Netlify **`
 3. **Đăng app:** `bash cong-cu/dang-app/dang.sh cong-cu/app-cap-nhat/web .` và `bash cong-cu/dang-app/dang.sh cong-cu/app-lai-suat/web lai-suat`.
 4. **Nút "Chạy cập nhật" (Netlify):**
    - Tạo fine-grained token: chỉ kho `tcb-ops`, quyền **Actions: Read and write**.
-   - Vào app.netlify.com → Import từ GitHub → kho `tcb-ops`, nhánh `netlify`, tên `tcb-ops-sn` → Environment variables: `GITHUB_TOKEN` = token vừa tạo → Deploy.
+   - Vào app.netlify.com → Import từ GitHub → kho `tcb-ops`, nhánh `netlify`, tên `cap-nhat-lai-suat` → Environment variables: `GITHUB_TOKEN` = token vừa tạo → Deploy.
    - Không dán token vào chat hay vào repo.
 
 ## Lưu ý

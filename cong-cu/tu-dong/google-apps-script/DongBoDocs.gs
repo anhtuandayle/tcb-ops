@@ -23,7 +23,7 @@ const DB = {
   THU_MUC_ID: '',                 // id thư mục Drive để chứa file Docs mới (trống = thư mục gốc My Drive)
   // Tùy chọn: hàm Netlify `kq` (đọc bản mới tức thì cho nút "Mở file Docs"). Trống = đọc raw GitHub (có thể chậm ~5 phút).
   // Máy GitHub luôn gửi kèm sha nên phần tự chép vào Docs KHÔNG cần Netlify. Có Netlify rồi thì điền:
-  // 'https://tcb-ops-sn.netlify.app/.netlify/functions/kq?f='
+  // 'https://cap-nhat-lai-suat.netlify.app/.netlify/functions/kq?f='
   KQ: '',
 };
 DB.RAW = 'https://raw.githubusercontent.com/' + DB.REPO + '/';

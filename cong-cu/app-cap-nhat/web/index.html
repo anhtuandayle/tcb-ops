@@ -155,7 +155,7 @@ footer{font-size:12px;color:var(--muted)}
 <script>
 // Nút chạy: gửi mã bài cho hàm Netlify (giữ chìa GitHub trong Netlify, không nằm trong trang) → GitHub Actions chạy ngay,
 // ghi bài mới lên nhánh tu-dong-ket-qua → trang này đọc về cho chép / tải.
-var HAM = /netlify\.app$/.test(location.hostname) ? "/.netlify/functions/chay" : "https://tcb-ops-sn.netlify.app/.netlify/functions/chay";
+var HAM = /netlify\.app$/.test(location.hostname) ? "/.netlify/functions/chay" : "https://cap-nhat-lai-suat.netlify.app/.netlify/functions/chay";
 var KQ = "https://raw.githubusercontent.com/anhtuandayle/tcb-ops/tu-dong-ket-qua/";
 var HAM_KQ = HAM.replace(/chay$/, "kq") + "?f=";   // đọc kết quả ngay qua hàm Netlify (raw.githubusercontent giữ bản cũ 5 phút)
 function docKq(f){ return fetch(HAM_KQ + f + "&t=" + Date.now()).then(function(r){ if (!r.ok) throw 0; return r; })
