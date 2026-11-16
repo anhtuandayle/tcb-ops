@@ -1,0 +1,25 @@
+▶ python3 -I /home/runner/work/tcb-ops/tcb-ops/cong-cu/skill-cap-nhat-bai-tcb/cap-nhat-bai-tcb/scripts/cap_nhat.py lay cap-nhat/cau-hinh.json
+bai1 ok
+▶ python3 -I /home/runner/work/tcb-ops/tcb-ops/cong-cu/skill-cap-nhat-bai-tcb/cong-thuc/gia-xang-dau/lay_gia.py cap-nhat
+Thông cáo Petrolimex mới nhất: Petrolimex điều chỉnh giá xăng dầu từ 15 giờ 00 phút ngày 12.11.2026
+   https://www.petrolimex.com.vn/ndi/thong-cao-bao-chi/petrolimex-dieu-chinh-gia-xang-dau-tu-15-gio-00-phut-ngay-12-11-2026.html
+  Ảnh bảng giá (PHẢI mở ra đối chiếu): cap-nhat/tam/plx-gia.jpg
+Mặt hàng         | Petrolimex V1/V2 (webgia) | PVOIL (GXHN) | Mipec V1/V2
+E10 RON 95-V     | 21,840/22,270            | -            | -
+E10 RON 95-III   | 19,840/20,230            | 19,840       | 19,840/20,230
+E5 RON 92-II     | 19,390/19,770            | 19,390       | 19,390/19,770
+DO 0,001S-V      | 28,620/29,190            | 28,620       | 28,620/29,190
+DO 0,05S-II      | 26,820/27,350            | 26,820       | 26,820/27,350
+Dầu hỏa 2-K      | 26,400/26,920            | -            | -
+→ cap-nhat/gia.json
+▶ python3 -I /home/runner/work/tcb-ops/tcb-ops/cong-cu/skill-cap-nhat-bai-tcb/cap-nhat-bai-tcb/scripts/cap_nhat.py dung cap-nhat/cau-hinh.json 17/11/2026
+bai1 Giá xăng dầu hôm nay 16/11, tin giá xăng mới nhất – 17/11/2026: 0 bảng lãi suất [], 0 ô sửa, 0 ô kỳ hạn gần nhất, 0 ô '-', 0 ô đổi màu, đổi ngày/tháng: 3
+▶ python3 -I /home/runner/work/tcb-ops/tcb-ops/cong-cu/skill-cap-nhat-bai-tcb/cong-thuc/gia-xang-dau/tao_sua.py --xem cap-nhat/xem.txt --gia cap-nhat/gia.json --ra cap-nhat/sua.json
+0 chỗ cần đổi, 2 mục cần duyệt → cap-nhat/sua.json
+  cần duyệt: Không thấy câu hỏi thường gặp về E10 RON 95-III Vùng 1 để cập nhật.
+  cần duyệt: Không thấy câu hỏi thường gặp về E5 RON 92-II Vùng 1 để cập nhật.
+▶ python3 -I /home/runner/work/tcb-ops/tcb-ops/cong-cu/skill-cap-nhat-bai-tcb/cap-nhat-bai-tcb/scripts/cap_nhat.py sua cap-nhat/cau-hinh.json cap-nhat/sua.json
+bai1: sửa được 0/0 chỗ
+Soát: khớp hết
+đổi ngày trong chữ sang 17/11/2026: 0 chỗ
+XONG gia-xang-dau ngày 17/11/2026
