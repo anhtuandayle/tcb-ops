@@ -5,11 +5,14 @@ bai2.html ok
 topi.html ok
 vne-offline.json ok
 vne-online.json ok
-▶ python3 -I cap-nhat.py dung 25/11/2026
-bai1 0 ô sửa, 0 ô theo kỳ hạn gần nhất, 0 ô trường hợp B, 0 số ngoài bảng, đổi ngày/tháng: ['Tiêu đề: 24/11/2026 → 25/11/2026', 'Sapo: 24/11/2026 → 25/11/2026', 'Ngày đăng: 24/11/2026 → 25/11/2026']
-bai2 0 ô sửa, 0 ô theo kỳ hạn gần nhất, 0 ô trường hợp B, 0 số ngoài bảng, đổi ngày/tháng: ['Tiêu đề: 24/11/2026 → 25/11/2026', 'Sapo: 24/11/2026 → 25/11/2026', 'Ngày đăng: 24/11/2026 → 25/11/2026']
+▶ python3 -I cap-nhat.py dung 26/11/2026
+bai1 67 ô sửa, 4 ô theo kỳ hạn gần nhất, 0 ô trường hợp B, 0 số ngoài bảng, đổi ngày/tháng: ['Tiêu đề: 25/11/2026 → 26/11/2026', 'Sapo: 25/11/2026 → 26/11/2026', 'Ngày đăng: 25/11/2026 → 26/11/2026']
+bai2 0 ô sửa, 0 ô theo kỳ hạn gần nhất, 0 ô trường hợp B, 0 số ngoài bảng, đổi ngày/tháng: ['Tiêu đề: 25/11/2026 → 26/11/2026', 'Sapo: 25/11/2026 → 26/11/2026', 'Ngày đăng: 25/11/2026 → 26/11/2026']
   cần duyệt: Bảng Tại quầy – VPBank: 36 tháng (5.8, Topi) thấp hơn hẳn 24 tháng (6.9, Topi) – số bất thường trên nguồn, vẫn điền theo nguồn.
-  cần duyệt: Bảng Tại quầy – VIB: 18 tháng (5.2, Topi) thấp hơn hẳn 12 tháng (6.5, VnExpress) – số bất thường trên nguồn, vẫn điền theo nguồn.
+  cần duyệt: Bảng Tại quầy – SeABank: 18 tháng (4.75, Topi) thấp hơn hẳn 12 tháng (6.1, VnExpress) – số bất thường trên nguồn, vẫn điền theo nguồn.
+  cần duyệt: Bảng Tại quầy – VIB: 18 tháng (5.2, Topi) thấp hơn hẳn 12 tháng (6.3, VnExpress) – số bất thường trên nguồn, vẫn điền theo nguồn.
+  cần duyệt: Bảng Tại quầy – MBBank: 18 tháng (5.7, Topi) thấp hơn hẳn 12 tháng (7, VnExpress) – số bất thường trên nguồn, vẫn điền theo nguồn.
+  cần duyệt: Bảng Tại quầy – ACB: 18 tháng (4.9, Topi) thấp hơn hẳn 12 tháng (6.2, VnExpress) – số bất thường trên nguồn, vẫn điền theo nguồn.
   cần duyệt: Bảng Tại quầy – SCB: 18 tháng (0.6, Topi) thấp hơn hẳn 12 tháng (3.7, VnExpress) – số bất thường trên nguồn, vẫn điền theo nguồn.
   cần duyệt: Bảng Tại quầy – SCB – 1 tháng: nguồn ghi 0.1, thấp bất thường.
   cần duyệt: Bảng Tại quầy – SCB – 3 tháng: nguồn ghi 0.1, thấp bất thường.
@@ -23,15 +26,11 @@ bai2 0 ô sửa, 0 ô theo kỳ hạn gần nhất, 0 ô trường hợp B, 0 s�
   cần duyệt: Bảng Online – VietinBank: 18 tháng (5.4, Topi) thấp hơn hẳn 12 tháng (6.8, VnExpress) – số bất thường trên nguồn, vẫn điền theo nguồn.
   cần duyệt: Bảng Online – Agribank: Topi không có ngân hàng này ở bảng online → kỳ hạn 18, 24, 36 tháng lấy theo kỳ hạn gần nhất.
   cần duyệt: Bảng Online – LPBank: 36 tháng (5.6, Topi) thấp hơn hẳn 24 tháng (6.7, Topi) – số bất thường trên nguồn, vẫn điền theo nguồn.
-  cần duyệt: Bảng Online – SCB – 1 tháng: nguồn ghi 0.1, thấp bất thường.
-  cần duyệt: Bảng Online – SCB – 3 tháng: nguồn ghi 0.5, thấp bất thường.
-  cần duyệt: Bảng Online – SCB – 6 tháng: nguồn ghi 0.5, thấp bất thường.
-  cần duyệt: Bảng Online – SCB – 12 tháng: nguồn ghi 0.6, thấp bất thường.
   cần duyệt: Bảng Online – SCB – 18 tháng: nguồn ghi 0.6, thấp bất thường.
   cần duyệt: Bảng Online – SCB – 24 tháng: nguồn ghi 0.7, thấp bất thường.
   cần duyệt: Bảng Online – SCB – 36 tháng: nguồn ghi 0.7, thấp bất thường.
   cần duyệt: Bảng Online – BacABank: Topi không có ngân hàng này ở bảng online → kỳ hạn 18, 24, 36 tháng lấy theo kỳ hạn gần nhất.
-  cần duyệt: Ngoài bảng – "Thông thường lãi suất gửi tiết kiệm online sẽ cao hơn lãi suất gửi tiết kiệm tại quầy từ 0.1 - 0.4%/năm.": khoảng chênh online − tại quầy không tính gọn được từ 2 bảng mới: 231 cặp ngân hàng–kỳ hạn, online cao hơn 175, bằng 49, thấp hơn 7; chênh từ -3.1 đến 3.6, nửa giữa 0.05–0.55 điểm %. Giữ nguyên.
-  cần duyệt: Ngoài bảng – "Ưu tiên gửi tiết kiệm online: Các khoản tiết kiệm online thường có lãi suất cao hơn gửi tại quầy khoảng 0.1 -…": khoảng chênh online − tại quầy không tính gọn được từ 2 bảng mới: 231 cặp ngân hàng–kỳ hạn, online cao hơn 175, bằng 49, thấp hơn 7; chênh từ -3.1 đến 3.6, nửa giữa 0.05–0.55 điểm %. Giữ nguyên.
-bai1 Lãi suất tiết kiệm Techcombank – 25/11/2026: 0 bảng lãi suất
-XONG lai-suat-1 ngày 25/11/2026
+  cần duyệt: Ngoài bảng – "Thông thường lãi suất gửi tiết kiệm online sẽ cao hơn lãi suất gửi tiết kiệm tại quầy từ 0.1 - 0.4%/năm.": khoảng chênh online − tại quầy không tính gọn được từ 2 bảng mới: 231 cặp ngân hàng–kỳ hạn, online cao hơn 159, bằng 43, thấp hơn 29; chênh từ -3.1 đến 3.8, nửa giữa 0–0.56 điểm %. Giữ nguyên.
+  cần duyệt: Ngoài bảng – "Ưu tiên gửi tiết kiệm online: Các khoản tiết kiệm online thường có lãi suất cao hơn gửi tại quầy khoảng 0.1 -…": khoảng chênh online − tại quầy không tính gọn được từ 2 bảng mới: 231 cặp ngân hàng–kỳ hạn, online cao hơn 159, bằng 43, thấp hơn 29; chênh từ -3.1 đến 3.8, nửa giữa 0–0.56 điểm %. Giữ nguyên.
+bai1 Lãi suất tiết kiệm Techcombank – 26/11/2026: 0 bảng lãi suất
+XONG lai-suat-1 ngày 26/11/2026
