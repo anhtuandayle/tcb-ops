@@ -5,9 +5,9 @@ bai2.html ok
 topi.html ok
 vne-offline.json ok
 vne-online.json ok
-▶ python3 -I cap-nhat.py dung 27/11/2026
-bai1 32 ô sửa, 6 ô theo kỳ hạn gần nhất, 0 ô trường hợp B, 0 số ngoài bảng, đổi ngày/tháng: ['Tiêu đề: 26/11/2026 → 27/11/2026', 'Sapo: 26/11/2026 → 27/11/2026', 'Ngày đăng: 26/11/2026 → 27/11/2026']
-bai2 0 ô sửa, 0 ô theo kỳ hạn gần nhất, 0 ô trường hợp B, 0 số ngoài bảng, đổi ngày/tháng: ['Tiêu đề: 26/11/2026 → 27/11/2026', 'Sapo: 26/11/2026 → 27/11/2026', 'Ngày đăng: 26/11/2026 → 27/11/2026']
+▶ python3 -I cap-nhat.py dung 28/11/2026
+bai1 32 ô sửa, 6 ô theo kỳ hạn gần nhất, 0 ô trường hợp B, 0 số ngoài bảng, đổi ngày/tháng: ['Tiêu đề: 27/11/2026 → 28/11/2026', 'Sapo: 27/11/2026 → 28/11/2026', 'Ngày đăng: 27/11/2026 → 28/11/2026']
+bai2 0 ô sửa, 0 ô theo kỳ hạn gần nhất, 0 ô trường hợp B, 0 số ngoài bảng, đổi ngày/tháng: ['Tiêu đề: 27/11/2026 → 28/11/2026', 'Sapo: 27/11/2026 → 28/11/2026', 'Ngày đăng: 27/11/2026 → 28/11/2026']
   cần duyệt: Bảng Tại quầy – VPBank: 36 tháng (5.8, Topi) thấp hơn hẳn 24 tháng (6.9, Topi) – số bất thường trên nguồn, vẫn điền theo nguồn.
   cần duyệt: Bảng Tại quầy – VIB: 18 tháng (5.2, Topi) thấp hơn hẳn 12 tháng (6.5, VnExpress) – số bất thường trên nguồn, vẫn điền theo nguồn.
   cần duyệt: Bảng Tại quầy – SCB: 18 tháng (0.6, Topi) thấp hơn hẳn 12 tháng (3.7, VnExpress) – số bất thường trên nguồn, vẫn điền theo nguồn.
@@ -26,5 +26,5 @@ bai2 0 ô sửa, 0 ô theo kỳ hạn gần nhất, 0 ô trường hợp B, 0 s�
   cần duyệt: Bảng Online – BacABank: Topi không có ngân hàng này ở bảng online → kỳ hạn 18, 24, 36 tháng lấy theo kỳ hạn gần nhất.
   cần duyệt: Ngoài bảng – "Thông thường lãi suất gửi tiết kiệm online sẽ cao hơn lãi suất gửi tiết kiệm tại quầy từ 0.1 - 0.4%/năm.": khoảng chênh online − tại quầy không tính gọn được từ 2 bảng mới: 231 cặp ngân hàng–kỳ hạn, online cao hơn 173, bằng 48, thấp hơn 10; chênh từ -3.1 đến 3.6, nửa giữa 0–0.65 điểm %. Giữ nguyên.
   cần duyệt: Ngoài bảng – "Ưu tiên gửi tiết kiệm online: Các khoản tiết kiệm online thường có lãi suất cao hơn gửi tại quầy khoảng 0.1 -…": khoảng chênh online − tại quầy không tính gọn được từ 2 bảng mới: 231 cặp ngân hàng–kỳ hạn, online cao hơn 173, bằng 48, thấp hơn 10; chênh từ -3.1 đến 3.6, nửa giữa 0–0.65 điểm %. Giữ nguyên.
-bai1 Lãi suất tiết kiệm Techcombank – 27/11/2026: 0 bảng lãi suất
-XONG lai-suat-1 ngày 27/11/2026
+bai1 Lãi suất tiết kiệm Techcombank – 28/11/2026: 0 bảng lãi suất
+XONG lai-suat-1 ngày 28/11/2026
